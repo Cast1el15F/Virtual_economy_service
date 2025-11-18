@@ -11,10 +11,30 @@ class Purchase_product(ABC):
     """
 
     @abstractmethod
-    async def purchase(product_id: int):
+    async def check_balance():
         pass
 
-class Use_product(ABC):
+    @abstractmethod
+    async def process_transaction():
+        pass
+
+    @abstractmethod
+    async def add_quantity_for_consumable():
+        pass
+
+    @abstractmethod
+    async def check_for_duplicates():
+        pass
+
+    @abstractmethod
+    async def cache():
+        pass
+
+    @abstractmethod
+    async def purchase():
+        pass
+
+class Use_consumable_product(ABC):
     """
     Использование consumable товара \n
 
@@ -23,5 +43,13 @@ class Use_product(ABC):
     """
 
     @abstractmethod
-    async def use(product_id: int):
+    async def check_availability():
+        pass
+
+    @abstractmethod
+    async def decrease_quantity():
+        pass
+
+    @abstractmethod
+    async def use():
         pass

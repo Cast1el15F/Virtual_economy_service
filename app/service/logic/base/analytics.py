@@ -11,3 +11,7 @@ class GetPopularProducts(ABC):
     @abstractmethod
     async def get_popular_products():
         pass
+
+    @abstractmethod
+    async def cache():
+        pass

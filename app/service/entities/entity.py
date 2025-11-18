@@ -28,6 +28,6 @@ class Transaction(BaseModel):
     id: int
     user_id: int
     product_id: int
-    amount: int
+    amount: float
     status: Literal["pending", "completed", "failed"]
     created_at = datetime.now()
