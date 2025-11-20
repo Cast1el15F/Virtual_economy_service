@@ -7,7 +7,7 @@ class User(BaseModel):
     username: str
     email: str
     balance: int
-    created_at = datetime.now()
+    # created_at = datetime.now()
 
 class Product(BaseModel):
     id: int
@@ -22,7 +22,7 @@ class Inventory(BaseModel):
     user_id: int
     product_id: int
     quantity: int
-    purchased_at = datetime.now()
+    # purchased_at = datetime.now()
 
 class Transaction(BaseModel):
     id: int
@@ -30,4 +30,4 @@ class Transaction(BaseModel):
     product_id: int
     amount: float
     status: Literal["pending", "completed", "failed"]
-    created_at = datetime.now()
+    # created_at = datetime.now()

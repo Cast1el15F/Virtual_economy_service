@@ -1,17 +1,19 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+from app.repository.config import CONFIG
+
 
 class ConnectPostgreSQL:
-    """Класс для подключения к PostgreSQL через SQLAlchemy. \n
-    connect() возвращает фабрику сессий."""
+    """Класс для подключения к PostgreSQL через SQLAlchemy async.
+    connect() возвращает фабрику асинхронных сессий (async_sessionmaker).
+    """
 
-    async def connect(self):
-        engine = create_engine(
-            "postgresql+psycopg://myuser:secret@localhost:5432/mydb",
-            echo=True,        # включаем логи SQL (удобно на dev)
-            future=True       # обязательный флаг для 2.0+
+    @staticmethod
+    def connect():
+        engine = create_async_engine(
+            CONFIG.DATABASE_URL,
+            echo=True,
+            future=True,
         )
 
-        # Фабрика сессий
-        SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
+        SessionLocal = async_sessionmaker(bind=engine, expire_on_commit=False)
         return SessionLocal
