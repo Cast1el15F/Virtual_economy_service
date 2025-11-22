@@ -24,7 +24,7 @@ class Product(Base):
     __tablename__ = "products"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(50), nullable=False)
+    name: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     description: Mapped[str] = mapped_column(String(500), nullable=False)
     price: Mapped[int] = mapped_column(Integer, server_default=text("0"), nullable=False)
     type: Mapped[Literal["consumable", "permanent"]] = mapped_column(
